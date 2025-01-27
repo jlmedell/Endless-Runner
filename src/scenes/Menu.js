@@ -29,6 +29,7 @@ class Menu extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press spacebar to start', menuConfig).setOrigin(0.5)
 
         keyStart = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+        keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
     }
 
     update() {
