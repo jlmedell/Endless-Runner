@@ -6,6 +6,7 @@ class Menu extends Phaser.Scene {
         //load images and sprites
         this.load.image('platform', './assets/platform.png')
         this.load.image('background', './assets/background.png')
+        this.load.image('arrow', './assets/Arrow.png')
         //load spritesheet
     }
     create() {
