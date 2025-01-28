@@ -15,7 +15,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        this.background = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
+        this.background = this.add.tileSprite(0, 0, 640, 640, 'background').setOrigin(0, 0);
 
         this.player = this.physics.add.sprite(60, 315, 'hero', 1).setScale(0.3);
         this.player.body.setCollideWorldBounds(true); 
@@ -45,10 +45,11 @@ class Play extends Phaser.Scene {
 
         
         for (let i = 0; i < 5; i++) {
-            let x = 200 + (430 * 10) + (i * 2000) //last number = gap between arrows
-            let y = 360
+            let x = 200 + (430) + (i * 2000) //last number = gap between arrows
+            let y = 400
             let arrow = this.arrows.create(x, y, 'arrow').setScale(0.2).refreshBody()
             arrow.body.setVelocityX(-200)
+            arrow.setOrigin(0,0)
         }
 
         //this.platform = this.physics.add.staticGroup();
@@ -77,13 +78,25 @@ class Play extends Phaser.Scene {
             loop: true 
         })
 
+        this.physics.add.overlap(
+            this.player,
+            this.arrows,
+            this.arrowCollision,
+            null,
+            this
+        );
+
         
     }
 
+    arrowCollision(player, arrow) {
+        this.scene.restart()
+    }
+
     update() {
-        //if (this.player.y + this.player.body.height >= this.scale.height) {
-            //this.scene.restart(); //restart upon hitting bottom of screen
-        //}
+        if (this.player.y >= 400) {
+            this.scene.restart() //restart upon hitting bottom of screen
+        }
             this.player.play('walk', true)
             this.background.tilePositionX += 4
 
@@ -100,8 +113,16 @@ class Play extends Phaser.Scene {
             this.arrows.children.iterate((arrow) => {
                 if (arrow.x < -arrow.width) {
                     arrow.x = 3000
-                    arrow.y = 360
+                    arrow.y = 400
                 }
+                //if (
+                    //this.player.body.x < arrow.x + arrow.width &&
+          //this.player.body.x + arrow.width > arrow.x &&
+          //this.player.body.y < arrow.y + arrow.height &&
+          //this.player.body.height + arrow.y > arrow.y
+                //) {
+                    //this.scene.restart()
+                //}
             })
     }
 }
