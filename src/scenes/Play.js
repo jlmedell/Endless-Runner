@@ -19,12 +19,43 @@ class Play extends Phaser.Scene {
         keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
 
         score = 0
-        this.background = this.add.tileSprite(0, 0, 640, 640, 'background').setOrigin(0, 0);
+        this.background = this.add.tileSprite(0, 0, 640, 640, 'background').setOrigin(0, 0)
 
-        this.player = this.physics.add.sprite(60, 315, 'hero', 1).setScale(0.3);
-        this.player.body.setCollideWorldBounds(true); 
-        this.player.body.setSize(300, 300).setOffset(0, 0); 
-        this.player.body.setGravityY(500); 
+        //score display
+        let scoreConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 100
+        }
+        this.scoreLeft = this.add.text(borderUISize*16, borderUISize + borderPadding*6, score, scoreConfig)
+
+        //instructions display
+        let boxConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            }
+        }
+        this.box1 = this.add.text(borderUISize - 10, borderUISize - borderPadding*2 - 10, 'Use ^ button to jump and double jump', boxConfig)
+        this.box2 = this.add.text(borderUISize - 10, borderUISize + borderPadding - 5, 'Avoid gaps and the tips of arrows', boxConfig)
+
+
+        this.player = this.physics.add.sprite(60, 315, 'hero', 1).setScale(0.3)
+        this.player.body.setCollideWorldBounds(true)
+        this.player.body.setSize(300, 300).setOffset(0, 0)
+        this.player.body.setGravityY(500)
 
         this.platforms = this.physics.add.group({
             allowGravity: false, 
@@ -121,6 +152,7 @@ class Play extends Phaser.Scene {
     //increase score by 10
     point() {
         score = score + 10
+        this.scoreLeft.text = score
     }
 
     update() {
