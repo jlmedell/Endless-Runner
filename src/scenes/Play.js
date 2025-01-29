@@ -113,7 +113,7 @@ class Play extends Phaser.Scene {
 
         //increase tick speed every minute or so
         this.speed = -230
-        this.interval = Phaser.Math.Between(60000,12000)
+        this.interval = Phaser.Math.Between(60000,120000) //60000,120000
         this.timeEvent = this.time.addEvent({
             delay: this.interval, 
             callback: this.faster,
@@ -132,20 +132,21 @@ class Play extends Phaser.Scene {
 
     arrowCollision(player, arrow) {
         //this.scene.restart()
+        this.sound.play('sfx-hurt')
         this.scene.start('creditsScene')
     }
 
     //increase tick speed by random amount
     faster() {
         if (this.speed > -350) {
-            this.speed -= Phaser.Math.Between(1,5)
+            this.speed -= Math.random() * 50 
             this.arrows.children.iterate((arrow) => {
                 arrow.body.setVelocityX(this.speed)
             })
             this.platforms.children.iterate((platform) => {
                 platform.body.setVelocityX(this.speed / 3)
             })
-            this.interval = Phaser.Math.Between(60000,12000)
+            this.interval = Phaser.Math.Between(60000,120000)
         }
     }
 
@@ -153,11 +154,13 @@ class Play extends Phaser.Scene {
     point() {
         score = score + 10
         this.scoreLeft.text = score
+        this.sound.play('sfx-checkpoint')
     }
 
     update() {
-        if (this.player.y >= 400) {
+        if (this.player.y >= 410) {
             //this.scene.restart() //restart upon hitting bottom of screen
+            this.sound.play('sfx-hurt')
             this.scene.start('creditsScene')
         }
             this.player.play('walk', true)
@@ -165,6 +168,7 @@ class Play extends Phaser.Scene {
 
             if (Phaser.Input.Keyboard.JustDown(keyUp) && this.jumps < 1) {
                 this.player.setVelocityY(-375) //player jump
+                this.sound.play('sfx-jump')
                 this.jumps = this.jumps + 1
             }
 

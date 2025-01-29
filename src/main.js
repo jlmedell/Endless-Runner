@@ -1,8 +1,10 @@
 //Name: Leo Medellin
-//Title: 
+//Title: Sir Runs-A-Lot 
 //Approximate Time: 
 
-//Creative Tilt:
+//Creative Tilt (Technical):
+
+//Creative Tilt (Artistic):
 
 let config = {
     type: Phaser.AUTO,
