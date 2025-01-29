@@ -23,11 +23,12 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'TITLE', menuConfig).setOrigin(0.5)
-        this.add.text(game.config.width/2, game.config.height/2, 'Use ←→ arrows to move & (F) to fire', menuConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize * 3, 'SIR RUNS-A-LOT', menuConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/2, 'Use ^ button to jump and double jump', menuConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize * 2 + borderPadding, 'Avoid gaps and the tips of arrows', menuConfig).setOrigin(0.5)
         menuConfig.backgroundColor = '#0000FF'
         menuConfig.color = '#000'
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press spacebar to start', menuConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize * 4 + borderPadding, 'Press spacebar to start', menuConfig).setOrigin(0.5)
 
         keyStart = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
         keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)

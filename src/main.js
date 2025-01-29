@@ -14,17 +14,18 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            debug: false,
         }
     },
-    scene: [ Menu, Play ]
+    scene: [ Menu, Play, Credits ]
 }
 let game = new Phaser.Game(config)
 
 let cursors
 
 // reserve keyboard bindings
-let keyStart, keyUp
+let keyStart, keyUp, keyRestart
 
 let borderUISize = game.config.height / 15
 let borderPadding = borderUISize / 3
+let score = 0
