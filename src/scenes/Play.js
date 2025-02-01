@@ -28,7 +28,7 @@ class Play extends Phaser.Scene {
 
         this.music = this.sound.add('trumpets', { 
             loop: true,
-            volume: 0.05
+            volume: 0.03
         })
         this.music.play()
 
