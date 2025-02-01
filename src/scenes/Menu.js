@@ -4,6 +4,16 @@ class Menu extends Phaser.Scene {
     }
     preload() {
         //load images and sprites
+        let loadingBar = this.add.graphics();
+        this.load.on('progress', (value) => {
+            loadingBar.clear();
+            loadingBar.fillStyle(0xFFFFFF, 1);
+            loadingBar.fillRect(0, game.config.width/2, 60 * value, 5);
+        });
+        this.load.on('complete', () => {
+            loadingBar.destroy();
+        });
+
         this.load.image('platform', './assets/platform.png')
         this.load.image('background', './assets/background.png')
         this.load.image('arrow', './assets/Arrow.png')
@@ -12,6 +22,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx-hurt', './assets/hitHurt.wav')
         this.load.audio('sfx-jump', './assets/jump.wav')
         this.load.audio('sfx-checkpoint', './assets/powerUp.wav')
+        this.load.audio('trumpets', './assets/trumpets.wav')
         //load spritesheet
     }
     create() {

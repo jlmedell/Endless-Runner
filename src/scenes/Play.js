@@ -4,6 +4,16 @@ class Play extends Phaser.Scene {
     }
    
     preload() {
+        let loadingBar = this.add.graphics();
+        this.load.on('progress', (value) => {
+            loadingBar.clear();
+            loadingBar.fillStyle(0xFFFFFF, 1);
+            loadingBar.fillRect(0, game.config.width/2, 60 * value, 5);
+        });
+        this.load.on('complete', () => {
+            loadingBar.destroy();
+        });
+
         this.load.spritesheet('hero', './assets/hero.png',{
             frameWidth: 300,
             frameHeight: 300,
@@ -15,6 +25,13 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+
+        this.music = this.sound.add('trumpets', { 
+            loop: true,
+            volume: 0.05
+        })
+        this.music.play()
+
         this.jumps = 0
         keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
 
@@ -127,6 +144,12 @@ class Play extends Phaser.Scene {
             callback: this.point,
             callbackScope: this,
             loop: true
+        })
+
+        this.events.on('shutdown', () => {
+            if (this.music) {
+                this.music.stop()
+            }
         })
     }
 

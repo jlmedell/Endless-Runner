@@ -23,7 +23,7 @@ class Credits extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/4 - borderUISize - borderPadding, 'Final Score: ' + score, menuConfig).setOrigin(0.5)
         this.add.text(game.config.width/2, game.config.height/4 + borderUISize, 'Sprites made using Piskel', menuConfig).setOrigin(0.5)
         this.add.text(game.config.width/2, game.config.height/4 + borderUISize * 3, 'Sound effects made using jsfxr', menuConfig).setOrigin(0.5)
-        this.add.text(game.config.width/2, game.config.height/4 + borderUISize * 5, 'Music composed with ', menuConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/4 + borderUISize * 5, 'Music composed with Garage Band', menuConfig).setOrigin(0.5)
         //menuConfig.backgroundColor = '#0000FF'
         //menuConfig.color = '#000'
         this.add.text(game.config.width/2, game.config.height/4 + borderUISize * 7 + borderUISize, 'Press spacebar to restart', menuConfig).setOrigin(0.5)
