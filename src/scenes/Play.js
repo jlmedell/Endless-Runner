@@ -6,13 +6,13 @@ class Play extends Phaser.Scene {
     preload() {
         let loadingBar = this.add.graphics();
         this.load.on('progress', (value) => {
-            loadingBar.clear();
-            loadingBar.fillStyle(0xFFFFFF, 1);
-            loadingBar.fillRect(0, game.config.width/2, 60 * value, 5);
-        });
+            loadingBar.clear()
+            loadingBar.fillStyle(0xFF0000, 1)
+            loadingBar.fillRect(game.config.width/2, game.config.height/2, (game.config.width/2) * value, 10)
+        })
         this.load.on('complete', () => {
-            loadingBar.destroy();
-        });
+            loadingBar.destroy()
+        })
 
         this.load.spritesheet('hero', './assets/hero.png',{
             frameWidth: 300,
