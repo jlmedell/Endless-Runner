@@ -7,7 +7,7 @@ class Play extends Phaser.Scene {
         let loadingBar = this.add.graphics();
         this.load.on('progress', (value) => {
             loadingBar.clear()
-            loadingBar.fillStyle(0x0000FF, 1)
+            loadingBar.fillStyle(0xFF0000, 1)
             loadingBar.fillRect(game.config.width/2, game.config.height/2, (game.config.width/2) * value, 10)
         })
         this.load.on('complete', () => {

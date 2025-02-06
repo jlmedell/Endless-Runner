@@ -32,6 +32,14 @@ genre seems to have few games with a medieval style/setting and I felt that it c
 be an interesting twist on this type of game.
 */
 
+//Sources:
+//https://www.thepolyglotdeveloper.com/2020/09/add-music-sounds-other-audio-phaser-game/ 
+//https://phaser.discourse.group/t/how-work-method-iterate-for-group/4422 
+//https://www.youtube.com/watch?v=WVsBI6nvtJ0 
+//https://phaser.io/examples/v3.85.0/tweens/eases/view/ease-equations 
+//https://phaser.io/tutorials/making-your-first-phaser-3-game/part8 (children.iterate command)
+
+
 let config = {
     type: Phaser.AUTO,
     width: 640,
